@@ -1,5 +1,6 @@
 require("dotenv").config();
 const app = require("./app");
+app.set("trust proxy", true);
 const componentRoutes=require("./routes/component");
 const adminRoutes=require("./routes/admin")
 const passport = require("passport");

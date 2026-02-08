@@ -8,7 +8,7 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: "/auth/google/callback",
+      callbackURL: process.env.GOOGLE_CALLBACK_URL ,
     },
     async (_, __, profile, done) => {
       let user = await User.findOne({ email: profile.emails[0].value });
@@ -26,69 +26,12 @@ passport.use(
   )
 );
 
-// passport.use(
-//   new GitHubStrategy(
-//     {
-//       clientID: process.env.GITHUB_CLIENT_ID,
-//       clientSecret: process.env.GITHUB_CLIENT_SECRET,
-//       callbackURL: "/auth/github/callback",
-//     },
-//     async (_, __, profile, done) => {
-//     //   let user = await User.findOne({ email: profile.emails?.[0]?.value });
-//     let user = await User.findOne({ githubId: profile.id });
-
-
-//       if (!user) {
-//         user = await User.create({
-//           name: profile.username,
-//           email: profile.emails?.[0]?.value || `${profile.username}@github`,
-//           provider: "github",
-//            password: "OAUTH_USER",
-//         });
-//       }
-
-//       done(null, user);
-//     }
-//   )
-// );
-
-// passport.use(
-//   new GitHubStrategy(
-//     {
-//       clientID: process.env.GITHUB_CLIENT_ID,
-//       clientSecret: process.env.GITHUB_CLIENT_SECRET,
-//       callbackURL: "/auth/github/callback",
-//     },
-//     async (_, __, profile, done) => {
-//       try {
-//         // 🔑 Always find by provider + providerId
-//         let user = await User.findOne({
-//           provider: "github",
-//           providerId: profile.id,
-//         });
-
-//         if (!user) {
-//           user = await User.create({
-//             name: profile.username,
-//             email: profile.emails?.[0]?.value || null, // ✅ NO FAKE EMAIL
-//             provider: "github",
-//             providerId: profile.id,
-//           });
-//         }
-
-//         return done(null, user);
-//       } catch (err) {
-//         return done(err, null);
-//       }
-//     }
-//   )
-// );
 passport.use(
   new GitHubStrategy(
     {
       clientID: process.env.GITHUB_CLIENT_ID,
       clientSecret: process.env.GITHUB_CLIENT_SECRET,
-      callbackURL: "/auth/github/callback",
+      callbackURL: process.env.GITHUB_CALLBACK_URL,
       scope: ["user:email"],
     },
     async (_, __, profile, done) => {
