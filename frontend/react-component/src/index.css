@@ -1,52 +1,81 @@
-
-
-/* RESET
-* {
-  box-sizing: border-box;
-}
-
-html,
-body,
-#root {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  min-height: 100%;
-  background: linear-gradient(
-    180deg,
-    #f6f9fc 0%,
-    #eef2ff 40%,
-    #f6f9fc 100%
-  );
-  color: #0f172a;
-}
-
-/* Subtle motion */
-/* @keyframes floatSoft {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-  100% { transform: translateY(0); }
-}
-
-.animate-float {
-  /* animation: floatSoft 10s ease-in-out infinite;
-} */ 
-
-/* 
 @import "tailwindcss";
 
-@tailwind utilities;
+/* ================================================================
+   LEETCODE-INSPIRED DARK THEME
+   
+   - Solid dark navbar (minimal, no gradient)
+   - Dark backgrounds & cards
+   - Light text on dark surfaces
+   - Amber #FFA116 accent used sparingly for CTAs and highlights
+   ================================================================ */
+@theme {
+  /* ── Slate: Inverted for dark theme ──
+     50 = darkest (backgrounds), 900 = lightest (text) */
+  --color-slate-50:  #0a0a0c;
+  --color-slate-100: #141416;
+  --color-slate-200: #27272a;
+  --color-slate-300: #3f3f46;
+  --color-slate-400: #71717a;
+  --color-slate-500: #a1a1aa;
+  --color-slate-600: #bbbbc4;
+  --color-slate-700: #d4d4d8;
+  --color-slate-800: #e4e4e7;
+  --color-slate-900: #ececef;
+  --color-slate-950: #fafafa;
 
+  /* ── Indigo → LeetCode Amber accent ── */
+  --color-indigo-50:  #1a1400;
+  --color-indigo-100: #2b2100;
+  --color-indigo-200: #3d3000;
+  --color-indigo-300: #7a6000;
+  --color-indigo-400: #b89000;
+  --color-indigo-500: #e5a800;
+  --color-indigo-600: #ffa116;
+  --color-indigo-700: #cc8200;
+  --color-indigo-800: #995f00;
+  --color-indigo-900: #664000;
+  --color-indigo-950: #332000;
 
+  /* ── Violet → Same amber (unified, no rainbow) ── */
+  --color-violet-50:  #1a1400;
+  --color-violet-100: #2b2100;
+  --color-violet-200: #3d3000;
+  --color-violet-300: #7a6000;
+  --color-violet-400: #b89000;
+  --color-violet-500: #e5a800;
+  --color-violet-600: #ffa116;
+  --color-violet-700: #cc8200;
+  --color-violet-800: #995f00;
+  --color-violet-900: #664000;
+  --color-violet-950: #332000;
 
+  /* ── Cyan → Same amber ── */
+  --color-cyan-50:  #1a1400;
+  --color-cyan-100: #2b2100;
+  --color-cyan-200: #3d3000;
+  --color-cyan-300: #7a6000;
+  --color-cyan-400: #b89000;
+  --color-cyan-500: #e5a800;
+  --color-cyan-600: #ffa116;
+  --color-cyan-700: #cc8200;
+  --color-cyan-800: #995f00;
+  --color-cyan-900: #664000;
+  --color-cyan-950: #332000;
 
+  /* ── Purple/Blue → Dark neutrals (page backgrounds) ── */
+  --color-purple-50:  #0e0e10;
+  --color-purple-100: #141416;
+  --color-purple-200: #1c1c1f;
 
+  --color-blue-50:  #0d0d10;
+  --color-blue-100: #141418;
 
-/* ===== SAFELIST FOR PRODUCTION (DO NOT REMOVE) ===== */
+  /* ── Red/Green tints → Dark for dark theme ── */
+  --color-red-50: #1f1515;
+  --color-green-50: #151f15;
+}
 
-@import "tailwindcss";
-
-/* ===== OPTIONAL SAFELIST (ONLY IF YOU NEED IT) ===== */
+/* ===== SAFELIST (DO NOT REMOVE) ===== */
 @layer utilities {
   .bg-indigo-50 {}
   .bg-indigo-100 {}
@@ -70,7 +99,9 @@ body,
   display: none;
 }
 
-/* Base reset */
+/* ================================================================
+   BASE & BODY
+   ================================================================ */
 * {
   box-sizing: border-box;
 }
@@ -83,15 +114,93 @@ body,
   padding: 0;
 }
 
-/* Background theme */
-
-/*      change  */
 body {
-  background: linear-gradient(
-    180deg,
-    #eef2ff 0%,
-    #eef2ff 40%,
-    #f5f3ff 100%
-  );
-  color: #0f172a;
+  background: #0a0a0c;
+  color: #ececef;
+}
+
+/* ================================================================
+   DARK CARD BACKGROUNDS
+   Override bg-white → dark card surface.
+   text-white is NOT affected (stays #fff for contrast).
+   ================================================================ */
+.bg-white {
+  background-color: #18181b !important;
+}
+.bg-white\/85 {
+  background-color: rgba(24, 24, 27, 0.9) !important;
+}
+.bg-white\/95 {
+  background-color: rgba(24, 24, 27, 0.95) !important;
+}
+.bg-white\/80 {
+  background-color: rgba(24, 24, 27, 0.85) !important;
+}
+.bg-white\/70 {
+  background-color: rgba(24, 24, 27, 0.75) !important;
+}
+
+/* ================================================================
+   MINIMAL DARK NAVBAR
+   Overrides the gradient to a solid dark surface.
+   ================================================================ */
+header > .absolute {
+  background: #111113 !important;
+}
+header {
+  border-bottom: 1px solid #27272a;
+}
+
+/* ================================================================
+   SHADOWS — Darker for dark backgrounds
+   ================================================================ */
+.shadow-sm {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) !important;
+}
+.shadow {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5), 0 1px 2px rgba(0, 0, 0, 0.4) !important;
+}
+.shadow-md {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4) !important;
+}
+.shadow-lg {
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.4) !important;
+}
+.shadow-xl {
+  box-shadow: 0 20px 25px rgba(0, 0, 0, 0.5) !important;
+}
+.shadow-2xl {
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6) !important;
+}
+
+/* ================================================================
+   CODE BLOCKS, TEXTAREAS, SELECTS — Dark surfaces
+   ================================================================ */
+pre, code, textarea, select {
+  background-color: #111113 !important;
+  color: #d4d4d8 !important;
+  border-color: #27272a !important;
+}
+
+input:not([type="checkbox"]):not([type="radio"]) {
+  background-color: #111113 !important;
+  color: #e4e4e7 !important;
+  border-color: #27272a !important;
+}
+
+input::placeholder, textarea::placeholder {
+  color: #71717a !important;
+}
+
+/* ================================================================
+   GRAY / ZINC BACKGROUNDS — Dark equivalents
+   ================================================================ */
+.bg-gray-50, .bg-zinc-50, .bg-neutral-50 {
+  background-color: #0d0d0f !important;
+}
+.bg-gray-100, .bg-zinc-100, .bg-neutral-100 {
+  background-color: #141416 !important;
+}
+.bg-gray-200, .bg-zinc-200, .bg-neutral-200 {
+  background-color: #1e1e21 !important;
 }

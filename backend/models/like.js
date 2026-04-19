@@ -14,6 +14,7 @@ const likeSchema = new mongoose.Schema(
     },
   },
   { timestamps: true }
+
 );
 
 likeSchema.index({ userId: 1, componentId: 1 }, { unique: true });

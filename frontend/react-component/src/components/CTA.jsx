@@ -124,28 +124,31 @@ export default function CTA() {
   const navigate = useNavigate();
 
   return (
-    <section  className="relative overflow-hidden bg-slate-50">
-      {/* SUBTLE BACKGROUND GRADIENT */}
-      <div className="absolute inset-0 bg-gradient-to-br from-indigo-50 via-white to-cyan-50" />
-
-      {/* VERY SOFT ACCENT GLOW */}
+    <section className="relative overflow-hidden"
+      style={{ backgroundColor: '#0e0e12' }}
+    >
+      {/* SUBTLE AMBER GLOW */}
       <div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
-                   w-[600px] h-[280px] bg-indigo-200/30 blur-[160px]"
+                   w-[600px] h-[280px] blur-[160px]"
+        style={{ backgroundColor: 'rgba(255, 161, 22, 0.08)' }}
       />
 
       <div className="relative max-w-4xl mx-auto px-6 py-28 text-center">
         {/* HEADLINE */}
-        <h2 className="text-4xl md:text-5xl font-semibold text-slate-900 tracking-tight">
+        <h2 className="text-4xl md:text-5xl font-semibold tracking-tight"
+          style={{ color: '#ececef' }}
+        >
           Start building with{" "}
-          <span className="bg-gradient-to-r from-indigo-600 to-violet-600
-                           bg-clip-text text-transparent">
+          <span style={{ color: '#ffa116' }}>
             ReactForge
           </span>
         </h2>
 
         {/* SUBTEXT */}
-        <p className="mt-5 text-slate-600 text-lg max-w-2xl mx-auto">
+        <p className="mt-5 text-lg max-w-2xl mx-auto"
+          style={{ color: '#a1a1aa' }}
+        >
           Explore production-ready React components and use them instantly
           in your projects.
         </p>
@@ -155,19 +158,23 @@ export default function CTA() {
           onClick={() => navigate("/components")}
           className="mt-12 inline-flex items-center justify-center
                      px-10 py-4 rounded-full
-                     bg-slate-900 text-white text-base font-medium
-                     shadow-lg shadow-slate-900/20
-                     hover:bg-slate-800
-                     hover:shadow-xl hover:shadow-slate-900/30
+                     text-base font-medium
                      hover:-translate-y-0.5
                      active:scale-[0.98]
                      transition-all duration-300"
+          style={{
+            backgroundColor: '#ffa116',
+            color: '#0a0a0c',
+            boxShadow: '0 10px 40px rgba(255, 161, 22, 0.25)',
+          }}
         >
           Explore production-ready components
         </button>
 
         {/* TRUST TEXT */}
-        <p className="mt-5 text-sm text-slate-500">
+        <p className="mt-5 text-sm"
+          style={{ color: '#71717a' }}
+        >
           Browse components · View code · No signup required
         </p>
       </div>

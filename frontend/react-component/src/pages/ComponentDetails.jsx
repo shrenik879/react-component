@@ -3487,50 +3487,71 @@ const handleLike = () =>
         </div>
 
         {/* RIGHT PREVIEW */}
-        <div className="bg-slate-900 rounded-2xl shadow-xl flex flex-col h-[520px] relative">
+        <div
+          className="rounded-2xl shadow-xl flex flex-col h-[520px] relative"
+          style={{ backgroundColor: '#1a1a2e', border: '1px solid #2a2a3e' }}
+        >
 
           {copied && (
-            <div className="absolute top-3 right-3 bg-black text-white text-xs px-3 py-1 rounded">
+            <div className="absolute top-3 right-3 text-xs px-3 py-1 rounded"
+              style={{ backgroundColor: '#ffa116', color: '#0a0a0c' }}
+            >
               Copied!
             </div>
           )}
 
-          <div className="flex justify-between px-4 py-3 border-b border-slate-700">
+          <div className="flex justify-between px-4 py-3"
+            style={{ borderBottom: '1px solid #2a2a3e' }}
+          >
             <div className="flex gap-2">
               <button
                 onClick={()=>setView("code")}
-                className="px-3 py-1 text-xs bg-slate-700 text-white rounded hover:bg-slate-600 transition"
+                className="px-3 py-1 text-xs rounded transition"
+                style={{
+                  backgroundColor: view === 'code' ? '#ffa116' : '#2a2a3e',
+                  color: view === 'code' ? '#0a0a0c' : '#d4d4d8',
+                }}
               >
                 Code
               </button>
 
               <button
                 onClick={()=>setView("preview")}
-                className="px-3 py-1 text-xs bg-slate-700 text-white rounded hover:bg-slate-600 transition"
+                className="px-3 py-1 text-xs rounded transition"
+                style={{
+                  backgroundColor: view === 'preview' ? '#ffa116' : '#2a2a3e',
+                  color: view === 'preview' ? '#0a0a0c' : '#d4d4d8',
+                }}
               >
                 Preview
               </button>
 
               <button
                 onClick={handleCopy}
-                className="px-3 py-1 text-xs bg-slate-700 text-white rounded hover:bg-slate-600 transition"
+                className="px-3 py-1 text-xs rounded transition"
+                style={{ backgroundColor: '#2a2a3e', color: '#d4d4d8' }}
               >
                 Copy
               </button>
             </div>
           </div>
 
-          <div className="flex-1 overflow-auto p-5 text-slate-100">
+          <div className="flex-1 overflow-auto p-5"
+            style={{ color: '#d4d4d8' }}
+          >
             {view === "preview" ? (
               <iframe
                 key={code}
                 title="Live Preview"
                 sandbox="allow-scripts allow-same-origin"
                 srcDoc={buildPreviewHTML(code)}
-                className="w-full h-full bg-white rounded"
+                className="w-full h-full rounded"
+                style={{ backgroundColor: '#fff' }}
               />
             ) : (
-              <pre className="font-mono text-sm whitespace-pre-wrap break-words">
+              <pre className="font-mono text-sm whitespace-pre-wrap break-words"
+                style={{ backgroundColor: 'transparent', color: '#e4e4e7', border: 'none' }}
+              >
                 {code}
               </pre>
             )}
